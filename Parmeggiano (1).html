@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Queso Parmeggiano - Encuesta</title>
+  <style>
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      background: #0f172a; color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+    }
+    .card {
+      width: min(720px, 92vw);
+      background: #111827; border-radius: 20px; padding: 28px;
+      text-align: center;
+    }
+    h1 { margin: 0 0 16px; font-size: 1.6rem; }
+    .buttons { display: flex; gap: 12px; justify-content: center; }
+    button {
+      border: none; border-radius: 14px; padding: 16px 24px;
+      font-weight: 700; cursor: pointer; font-size: 1.2rem;
+    }
+    .yes { background: #10b981; color: #fff; }
+    .no { background: #ef4444; color: #fff; }
+    .out {
+      margin-top: 20px; padding: 16px; border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      min-height: 64px; font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>¿Te gusta el queso <em>parmeggiano</em> rallado medianamente grueso?</h1>
+    <div class="buttons">
+      <button class="yes" id="btnSi">Sí</button>
+      <button class="no" id="btnNo">No</button>
+    </div>
+    <div id="salida" class="out"></div>
+  </main>
+
+  
+  <audio id="audioNo" src="/audio/velorio.mp3"></audio>
+
+  <script>
+    const salida = document.getElementById('salida');
+    const btnSi  = document.getElementById('btnSi');
+    const btnNo  = document.getElementById('btnNo');
+    const audioNo = document.getElementById('audioNo');
+
+    btnSi.addEventListener('click', () => {
+      salida.textContent = 'Masivo bro!';
+    });
+
+    btnNo.addEventListener('click', () => {
+      salida.textContent = 'VOY A IR AL VELORIO DE TU VIEJO, VOY A PARARME AL LADO DEL CAJON Y VOY A DECIR " JA JA JA SE MURIO ESTE VIEJO PELOTUDO,CHE DE QUE SE HABRA MUERTO ESTE VIEJO QUE ES TAN PELOTUDO? BANEADO, POR PELOTUDO!!!';
+      audioNo.currentTime = 0; 
+      audioNo.play().catch(err => console.log("Error al reproducir:", err));
+    });
+  </script>
+</body>
+</html>
